@@ -1,0 +1,45 @@
+/**********************BASE ELEMENTS******************************************/
+.wrapper{
+  margin: 0 auto;
+  width: 70%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+h1{
+  text-align: center;
+}
+/************************LAYOUT************************************************/
+ul{
+  list-style: none;
+  font-size: 24px;
+  text-align: center;
+}
+
+.navbar li{
+  display: inline-block;
+  padding-left: 1.3em;
+}
+
+.header {
+
+}
+/************************MODULE***********************************************/
+
+
+
+
+
+
+
+/************************MEDIA QUERIES****************************************/
+
+@media only screen and (max-width:650px) {
+  .wrapper{
+    width:70%;
+    margin: 0 auto;
+  }
+  .navbar li {
+        display: block;
+      }
+}
