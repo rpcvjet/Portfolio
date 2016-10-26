@@ -1,0 +1,9 @@
+@media only screen and (max-width:675px) {
+  .wrapper{
+    width:70%;
+    margin: 0 auto;
+  }
+  .navbar li {
+        display: block;
+      }
+}
