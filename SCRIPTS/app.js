@@ -21,7 +21,6 @@ textForPortfolio.forEach(function(ele) {
 myProjects.forEach(function(article) {
   $('#Home').append(article.toHtml());  //calls the toHTML method and attachest to DOM
   console.log('newproject');
-
 });
 //****************************About me Functon*********************
 var aboutMeText = [];

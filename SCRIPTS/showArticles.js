@@ -7,7 +7,6 @@ articleView.handleaboutMe = function () {
     var aboutMeTab = $(this).attr('data-content');
     $('section').hide(); //"hides all sections and display:none"
     $('#' + aboutMeTab).show(); //and then immediately show "find me the id  with the value of VAR"
-
     // var homeTab = $(this).attr('data-content');
     // console.log(homeTab);
     // console.log(aboutMeTab);
