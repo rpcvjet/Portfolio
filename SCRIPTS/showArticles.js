@@ -1,18 +1,17 @@
 'use strict';
-// $(document).ready(function () {
-//   $('Text').hide();
-// });
 var articleView = {};
 
 articleView.handleaboutMe = function () {
-  $('.navbar').on('click', '.icon-wondering2',function (){
+  $('#AboutMe').hide();
+  $('.navbar').on('click', '.navi',function (){
     var aboutMeTab = $(this).attr('data-content');
-    // $('.text-area').hide();  //hides everything on page
+    $('article').hide();
+    $('#' + aboutMeTab).show();
 
-  // $('data-content').filter('.about').show();
-    console.log('blah');
-
-
+    var homeTab = $(this).attr('data-content');
+    $('article').hide();
+    $('#' + homeTab).show();
+    // console.log(aboutMeTab);
   }); //end of .navbar function
 }; //end of articleView function
 
