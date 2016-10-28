@@ -32,7 +32,7 @@ function Text (info){
 }
 Text.prototype.toHtml = function () {
   var $newText = $('article.template').clone();
-  $newText.attr('id','AboutMe');
+  // $newText.attr('id','AboutMe');
   $newText.find('p').html(this.text);
   $newText.find('h1').html(this.title);
   $newText.removeClass('template'); //dont think I need this since there is only one object but doing it anyway
@@ -42,7 +42,7 @@ aboutMe.forEach(function(ele){
   aboutMeText.push(new Text(ele));
 });
 aboutMeText.forEach(function (article) {
-  $('#Home').append(article.toHtml());
+  $('#aboutSection').append(article.toHtml());
   console.log('newText');
 });
 
