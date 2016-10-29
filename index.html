@@ -10,16 +10,16 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <script id="article-template" type="text/x-handlebars-template">
       <article class="theMainArea">
-        <header>
       <h1>{{title}} </h1>
-        </header>
-
-      <body>{{body}}</body>
-      <a href="">{{url}}</a>
-
+      <p>{{body}}</p>
+      <a href="{{url}}"> See Website here</a>
     </article>
+  </script>
 
-
+  <script id="aboutMe-template" type="text/x-handlebars-template">
+    <h1>{{title}}</h1>
+    <p>{{text}}</p>
+  </script>
 
   </head>
   <header class="header">
@@ -36,16 +36,10 @@
   </div>
   <main>
     <section id = "Home" class="text-area" data-content="printarea">
-      <article class="template">
-        <h1></h1>
-          <p> </p>
-          <a href="">See Website Here </a>
-      </article>
     </section>
     <section id="aboutSection">
     </section>
   </main>
-
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
     <script src="SCRIPTS/textForPortfolio.js" charset="utf-8"></script>
