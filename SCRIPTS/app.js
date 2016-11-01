@@ -12,12 +12,27 @@ Project.prototype.toHtml = function () {
   var templateRender = Handlebars.compile(source);
   return templateRender(this);
 };
-textForPortfolio.forEach(function(ele) {
-  myProjects.push(new Project(ele));
-});
-myProjects.forEach(function(a){
-  $('#Home').append(a.toHtml());
-});
+
+Project.loadAll = function (d) {
+  myProjects.push (new Project(d));
+};
+
+Project.fetchAll = function (){
+  if (localStorage.textForPortfolio){
+    var fromLocalStorage = localStorage.getItem('textForPortfolio');
+    var parsedData = JSON.parse(fromLocalStorage);
+    Project.loadAll(parsedData);
+    articleView.handleaboutMe();
+  }
+  else {
+    $.getJSON('textForPortfolio', function(text){
+      localStorage.setItem('textForPortfolio', JSON.stringify(text));
+      Project.loadAll(text);
+      articleView.handleaboutMe();
+      console.log('hi');
+    });
+  }
+};//end of function
 //****************************About me Functon*********************
 var aboutMeText = [];
 
