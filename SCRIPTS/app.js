@@ -19,17 +19,16 @@ Project.loadAll = function (d) {
 
 Project.fetchAll = function (){
   if (localStorage.textForPortfolio){
-    var fromLocalStorage = localStorage.getItem('textForPortfolio');
+    var fromLocalStorage = localStorage.getItem('textForPortfolio.json');
     var parsedData = JSON.parse(fromLocalStorage);
     Project.loadAll(parsedData);
     articleView.handleaboutMe();
   }
   else {
-    $.getJSON('textForPortfolio', function(text){
-      localStorage.setItem('textForPortfolio', JSON.stringify(text));
+    $.getJSON('SCRIPTS/textForPortfolio.json', function(text){
+      localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
       Project.loadAll(text);
       articleView.handleaboutMe();
-      console.log('hi');
     });
   }
 };//end of function
@@ -45,10 +44,23 @@ Text.prototype.toHtml = function () {
   var aboutMeRender = Handlebars.compile(source);
   return aboutMeRender(this);
 };
-aboutMe.forEach(function(ele){
-  aboutMeText.push(new Text(ele));
-});
-aboutMeText.forEach(function (d) {
-  $('#aboutSection').append(d.toHtml());
-  console.log('newText');
-});
+
+Text.loadAll = function (a) {
+  aboutMeText.push (new Text(a));
+};
+
+Text.fetchAll = function () {
+  if (localStorage.aboutMe) {
+    var inLocalStorage = localStorage.getItem('aboutMe.json');
+    var aboutMeParsed = JSON.parse (inLocalStorage);
+    Text.loadAll(aboutMeParsed);
+    articleView.handleaboutMe();
+  }
+  else{
+    $.getJSON('SCRIPTS/aboutMe.json', function (a){
+      localStorage.setItem('aboutMe.json', JSON.stringify(a));
+      Text.loadAll(a);
+      articleView.handleaboutMe();
+    });
+  }
+};
