@@ -12,12 +12,26 @@ Project.prototype.toHtml = function () {
   var templateRender = Handlebars.compile(source);
   return templateRender(this);
 };
-textForPortfolio.forEach(function(ele) {
-  myProjects.push(new Project(ele));
-});
-myProjects.forEach(function(a){
-  $('#Home').append(a.toHtml());
-});
+
+Project.loadAll = function (d) {
+  myProjects.push (new Project(d));
+};
+
+Project.fetchAll = function (){
+  if (localStorage.textForPortfolio){
+    var fromLocalStorage = localStorage.getItem('textForPortfolio.json');
+    var parsedData = JSON.parse(fromLocalStorage);
+    Project.loadAll(parsedData);
+    articleView.handleaboutMe();
+  }
+  else {
+    $.getJSON('SCRIPTS/textForPortfolio.json', function(text){
+      localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
+      Project.loadAll(text);
+      articleView.handleaboutMe();
+    });
+  }
+};//end of function
 //****************************About me Functon*********************
 var aboutMeText = [];
 
@@ -30,10 +44,23 @@ Text.prototype.toHtml = function () {
   var aboutMeRender = Handlebars.compile(source);
   return aboutMeRender(this);
 };
-aboutMe.forEach(function(ele){
-  aboutMeText.push(new Text(ele));
-});
-aboutMeText.forEach(function (d) {
-  $('#aboutSection').append(d.toHtml());
-  console.log('newText');
-});
+
+Text.loadAll = function (a) {
+  aboutMeText.push (new Text(a));
+};
+
+Text.fetchAll = function () {
+  if (localStorage.aboutMe) {
+    var inLocalStorage = localStorage.getItem('aboutMe.json');
+    var aboutMeParsed = JSON.parse (inLocalStorage);
+    Text.loadAll(aboutMeParsed);
+    articleView.handleaboutMe();
+  }
+  else{
+    $.getJSON('SCRIPTS/aboutMe.json', function (a){
+      localStorage.setItem('aboutMe.json', JSON.stringify(a));
+      Text.loadAll(a);
+      articleView.handleaboutMe();
+    });
+  }
+};
