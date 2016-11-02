@@ -13,8 +13,13 @@ Project.prototype.toHtml = function () {
   return templateRender(this);
 };
 
-Project.loadAll = function (d) {
-  myProjects.push (new Project(d));
+Project.loadAll = function (d) { //d is the returned array of Objects
+  d.forEach(function (obj){
+    myProjects.push (new Project(obj));
+  });
+  myProjects.forEach (function(ele) {
+    $('#Home').append(ele.toHtml());
+  });
 };
 
 Project.fetchAll = function (){
@@ -32,7 +37,7 @@ Project.fetchAll = function (){
     });
   }
 };//end of function
-//****************************About me Functon*********************
+//****************************About me Functon**********************************
 var aboutMeText = [];
 
 function Text (info){
@@ -46,7 +51,13 @@ Text.prototype.toHtml = function () {
 };
 
 Text.loadAll = function (a) {
-  aboutMeText.push (new Text(a));
+  a.forEach(function(a){
+    aboutMeText.push (new Text(a));
+  });
+aboutMeText.forEach(function(a){
+  $('#aboutSection').append(a.toHtml());
+});
+
 };
 
 Text.fetchAll = function () {
