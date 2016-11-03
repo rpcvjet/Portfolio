@@ -34,6 +34,12 @@ Project.fetchAll = function (){
       localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
       Project.loadAll(text);
       articleView.handleaboutMe();
+      var textFromJson = text.map(function (b){
+        console.log(b.title);
+        return b.title;
+      }.reduce (function(sum, current){
+      return sum + current;
+      })
     });
   }
 };//end of function
@@ -54,10 +60,9 @@ Text.loadAll = function (a) {
   a.forEach(function(a){
     aboutMeText.push (new Text(a));
   });
-aboutMeText.forEach(function(a){
-  $('#aboutSection').append(a.toHtml());
-});
-
+  aboutMeText.forEach(function(a){
+    $('#aboutSection').append(a.toHtml());
+  });
 };
 
 Text.fetchAll = function () {
@@ -72,6 +77,16 @@ Text.fetchAll = function () {
       localStorage.setItem('aboutMe.json', JSON.stringify(a));
       Text.loadAll(a);
       articleView.handleaboutMe();
+      var totalWordsAboutmeSection = a.map(function(c){
+        console.log(c.text);
+        // return c.text;
+        return c.text.split(' ').
+
+        })
+
+
+
+      });
     });
   }
 };
