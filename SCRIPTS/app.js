@@ -37,7 +37,9 @@ Project.fetchAll = function (){
       var textFromJson = text.map(function (b){
         console.log(b.title);
         return b.title;
-      });
+      }.reduce (function(sum, current){
+      return sum + current;
+      })
     });
   }
 };//end of function
@@ -77,10 +79,12 @@ Text.fetchAll = function () {
       articleView.handleaboutMe();
       var totalWordsAboutmeSection = a.map(function(c){
         console.log(c.text);
-        var wordCount = c.reduce(function(sum, current) {
-          return sum + current;
-          console.log(wordCount);
+        // return c.text;
+        return c.text.split(' ').
+
         })
+
+
 
       });
     });
