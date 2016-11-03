@@ -34,8 +34,11 @@ Project.fetchAll = function (){
       localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
       Project.loadAll(text);
       articleView.handleaboutMe();
-      var textFromJson = text.map(function (b){
-        console.log(b.title);
+      var textFromJson = text.map(function (b).reduce (function(sum, current){
+
+
+      })
+      {
         return b.title;
       }.reduce (function(sum, current){
       return sum + current;
