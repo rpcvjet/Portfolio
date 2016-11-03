@@ -61,7 +61,6 @@ Text.loadAll = function (a) {
   aboutMeText.forEach(function(a){
     $('#aboutSection').append(a.toHtml());
   });
-
 };
 
 Text.fetchAll = function () {
@@ -74,12 +73,16 @@ Text.fetchAll = function () {
   else{
     $.getJSON('SCRIPTS/aboutMe.json', function (a){
       localStorage.setItem('aboutMe.json', JSON.stringify(a));
-      var totalWordsAboutmeSection = a.reduce(function(sum, current, idx, array ){
-        console.log(totalWordsAboutmeSection);
-
-      });
       Text.loadAll(a);
       articleView.handleaboutMe();
+      var totalWordsAboutmeSection = a.map(function(c){
+        console.log(c.text);
+        var wordCount = c.reduce(function(sum, current) {
+          return sum + current;
+          console.log(wordCount);
+        })
+
+      });
     });
   }
 };
