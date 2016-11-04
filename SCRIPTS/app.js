@@ -1,6 +1,7 @@
 'use strict';
 
 var myProjects = [];
+var thisManyWords = [];
 
 function Project (info){
   this.title = info.title;
@@ -19,6 +20,7 @@ Project.loadAll = function (d) { //d is the returned array of Objects
   myProjects.forEach (function(ele) {
     $('#Home').append(ele.toHtml());
   });
+
 };
 Project.fetchAll = function (){
   if (localStorage.textForPortfolio){
@@ -38,7 +40,7 @@ Project.fetchAll = function (){
       var bodyCount = text.map (function (b){
         return b.body.split(' ').length;
       });
-      var total =bodyCount.reduce(function (sum, current){
+      var total = bodyCount.reduce(function (sum, current){
         return sum + current;
       });
       console.log(total);
