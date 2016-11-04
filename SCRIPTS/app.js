@@ -3,6 +3,10 @@
 var myProjects = [];
 var thisManyWords = [];
 
+function showWordsonPage (){
+  thisManyWords.push(total);
+}
+
 function Project (info){
   this.title = info.title;
   this.body = info.body;
@@ -43,7 +47,7 @@ Project.fetchAll = function (){
       var total = bodyCount.reduce(function (sum, current){
         return sum + current;
       });
-      console.log(total);
+      $('#wordcount').text(total);
     });
   }
 };//end of function
