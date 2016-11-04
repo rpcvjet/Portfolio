@@ -1,11 +1,6 @@
 'use strict';
 
 var myProjects = [];
-var thisManyWords = [];
-
-function showWordsonPage (){
-  thisManyWords.push(total);
-}
 
 function Project (info){
   this.title = info.title;
@@ -24,7 +19,6 @@ Project.loadAll = function (d) { //d is the returned array of Objects
   myProjects.forEach (function(ele) {
     $('#Home').append(ele.toHtml());
   });
-
 };
 Project.fetchAll = function (){
   if (localStorage.textForPortfolio){
