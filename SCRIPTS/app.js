@@ -1,6 +1,7 @@
 'use strict';
 
 var myProjects = [];
+var thisManyWords = [];
 
 function Project (info){
   this.title = info.title;
@@ -12,7 +13,6 @@ Project.prototype.toHtml = function () {
   var templateRender = Handlebars.compile(source);
   return templateRender(this);
 };
-
 Project.loadAll = function (d) { //d is the returned array of Objects
   d.forEach(function (obj){
     myProjects.push (new Project(obj));
@@ -20,8 +20,8 @@ Project.loadAll = function (d) { //d is the returned array of Objects
   myProjects.forEach (function(ele) {
     $('#Home').append(ele.toHtml());
   });
-};
 
+};
 Project.fetchAll = function (){
   if (localStorage.textForPortfolio){
     var fromLocalStorage = localStorage.getItem('textForPortfolio.json');
@@ -34,12 +34,16 @@ Project.fetchAll = function (){
       localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
       Project.loadAll(text);
       articleView.handleaboutMe();
-      var textFromJson = text.map(function (b){
-        console.log(b.title);
+      var titlesFromJson = text.map(function (b){
         return b.title;
-      }.reduce (function(sum, current){
-      return sum + current;
-      })
+      });
+      var bodyCount = text.map (function (b){
+        return b.body.split(' ').length;
+      });
+      var total = bodyCount.reduce(function (sum, current){
+        return sum + current;
+      });
+      console.log(total);
     });
   }
 };//end of function
@@ -55,7 +59,6 @@ Text.prototype.toHtml = function () {
   var aboutMeRender = Handlebars.compile(source);
   return aboutMeRender(this);
 };
-
 Text.loadAll = function (a) {
   a.forEach(function(a){
     aboutMeText.push (new Text(a));
@@ -64,7 +67,6 @@ Text.loadAll = function (a) {
     $('#aboutSection').append(a.toHtml());
   });
 };
-
 Text.fetchAll = function () {
   if (localStorage.aboutMe) {
     var inLocalStorage = localStorage.getItem('aboutMe.json');
@@ -78,14 +80,6 @@ Text.fetchAll = function () {
       Text.loadAll(a);
       articleView.handleaboutMe();
       var totalWordsAboutmeSection = a.map(function(c){
-        console.log(c.text);
-        // return c.text;
-        return c.text.split(' ').
-
-        })
-
-
-
       });
     });
   }
