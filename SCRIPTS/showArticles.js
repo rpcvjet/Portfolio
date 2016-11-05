@@ -14,4 +14,4 @@ articleView.handleaboutMe = function () {
 
 articleView.handleaboutMe();
 Project.fetchAll();
-Text.fetchAll();
+Data.fetchAll();

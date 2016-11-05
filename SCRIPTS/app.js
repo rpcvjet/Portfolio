@@ -32,7 +32,7 @@ Project.fetchAll = function (){
       localStorage.setItem('textForPortfolio.json', JSON.stringify(text));
       Project.loadAll(text);
       articleView.handleaboutMe();
-      var titlesFromJson = text.map(function (b){
+      text.map(function (b){
         return b.title;
       });
       var bodyCount = text.map (function (b){
@@ -48,37 +48,35 @@ Project.fetchAll = function (){
 //****************************About me Functon**********************************
 var aboutMeText = [];
 
-function Text (info){
+function Data (info){
   this.text = info.text;
   this.title = info.title;
 }
-Text.prototype.toHtml = function () {
+Data.prototype.toHtml = function () {
   var source = $('#aboutMe-template').html();
   var aboutMeRender = Handlebars.compile(source);
   return aboutMeRender(this);
 };
-Text.loadAll = function (a) {
+Data.loadAll = function (a) {
   a.forEach(function(a){
-    aboutMeText.push (new Text(a));
+    aboutMeText.push (new Data(a));
   });
   aboutMeText.forEach(function(a){
     $('#aboutSection').append(a.toHtml());
   });
 };
-Text.fetchAll = function () {
+Data.fetchAll = function () {
   if (localStorage.aboutMe) {
     var inLocalStorage = localStorage.getItem('aboutMe.json');
     var aboutMeParsed = JSON.parse (inLocalStorage);
-    Text.loadAll(aboutMeParsed);
+    Data.loadAll(aboutMeParsed);
     articleView.handleaboutMe();
   }
   else{
     $.getJSON('SCRIPTS/aboutMe.json', function (a){
       localStorage.setItem('aboutMe.json', JSON.stringify(a));
-      Text.loadAll(a);
+      Data.loadAll(a);
       articleView.handleaboutMe();
-      var totalWordsAboutmeSection = a.map(function(c){
-      });
     });
   }
 };
