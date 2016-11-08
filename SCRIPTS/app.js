@@ -44,7 +44,7 @@ Project.fetchAll = function (){
       $('#wordcount').text(total);
     });
   }
-};//end of function
+};//end of Fetchall function
 //****************************About me Functon**********************************
 var aboutMeText = [];
 
