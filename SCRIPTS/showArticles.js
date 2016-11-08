@@ -11,7 +11,6 @@ articleView.handleaboutMe = function () {
   }); //end of .navbar function
   // $('navbar .navi:first').click();
 }; //end of articleView function
-
 articleView.handleaboutMe();
 Project.fetchAll();
-Text.fetchAll();
+Data.fetchAll();
