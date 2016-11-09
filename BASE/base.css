@@ -18,6 +18,6 @@ a {
   display: none;
 }
 body{
-  background-image: url(/home/kenneth/codefellows/301/portfolio/IMAGES/white-background-with-music-notes_1048-1097.jpg);
+  background-image: url('/IMAGES/white-background-with-music-notes_1048-1097.jpg');
   font-family: 'Lato', sans-serif;
 }
