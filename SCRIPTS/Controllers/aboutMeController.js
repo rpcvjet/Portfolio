@@ -8,5 +8,5 @@
     $('#aboutSection').show();
   };
 
-  module.aboutController = articleController;
+  module.aboutController = aboutController;
 })(window);
