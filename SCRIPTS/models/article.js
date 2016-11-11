@@ -66,28 +66,6 @@
     });
   };
 
-  Article.fetchAll = function() {
-    webDB.execute('SELECT * FROM articles ORDER BY publishedOn DESC', function(rows) {
-      if (rows.length) {
-        Article.loadAll(rows);
-        articleView.renderIndexPage();
-        articleView.initAdminPage();
-      } else {
-        $.getJSON('SCRIPTS/textForPortfolio.json', function(rawData) {
-          // Cache the json, so we don't need to request it next time:
-          rawData.forEach(function(item) {
-            var article = new Article(item); // Instantiate an article based on item from JSON
-            article.insertRecord(); // Cache the article in DB
-          });
-          webDB.execute('SELECT * FROM articles', function(rows) {
-            Article.loadAll(rows);
-            articleView.renderIndexPage();
-            articleView.initAdminPage();
-          });
-        });
-      }
-    });
-  };
 
   Article.allAuthors = function() {
     return Article.allArticles.map(function(article) {
@@ -127,6 +105,5 @@
     });
   };
   Article.createTable();
-  Article.fetchAll();
   module.Article = Article;
 })(window);
