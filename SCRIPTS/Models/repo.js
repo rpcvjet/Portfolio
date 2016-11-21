@@ -14,6 +14,5 @@
       return aRepo[attr];
     });
   };
-
   module.reposObj = reposObj;
 })(window);
