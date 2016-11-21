@@ -19,6 +19,19 @@
     <h1>{{title}}</h1>
     <p>{{text}}</p>
   </script>
+  <script id="repo-template" type="text/x-handlebars-template">
+      <li>
+        <!-- TODO: Fill in our new template expressions! -->
+        <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
+        <p>Description: {{description}}</p>
+        <p>Primary Language: {{language}}</p>
+        <p>Created: {{created_at}}</p>
+        <p>Last updated: {{updated_at}}</p>
+        {{#if watchers_count}}
+          <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
   </head>
   <header class="header">
     <ul class="navbar">
@@ -38,12 +51,20 @@
     <section id = "Home" class="text-area" data-content="printarea">
     </section>
     <section id="aboutSection">
+
+      <div id="repoMe">
+
+      </div>
+
     </section>
   </main>
   <script src="githubtoken.js" charset="utf-8"></script>
+  <script src="vender/html5sql.js" charset="utf-8"></script>
+  <script src="vender/webdb.js" charset="utf-8"></script>
   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src="SCRIPTS/Models/repo.js" charset="utf-8"></script>
+  <script src="SCRIPTS/models/repo.js" charset="utf-8"></script>
+  <script src="SCRIPTS/models/article.js" charset="utf-8"></script>
   <script src="/SCRIPTS/Controllers/aboutMeController.js" charset="utf-8"></script>
   <script src="SCRIPTS/Controllers/articleController.js" charset="utf-8"></script>
   <script src="SCRIPTS/Controllers/routes.js" charset="utf-8"></script>
