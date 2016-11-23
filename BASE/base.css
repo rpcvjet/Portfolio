@@ -5,8 +5,13 @@
   padding-right: 1em;
 
 }
+@font-face {
+  font-family: 'Jaapokki';
+  src: url(/fonts/jaapokkisubtract-regular.woff) format('woff');
+}
 
 h1{
+  font-family: 'Jaapokki';
   text-align: center;
 }
 
@@ -16,8 +21,4 @@ a {
 
 .template a{
   display: none;
-}
-body{
-  background-image: url('/IMAGES/white-background-with-music-notes_1048-1097.jpg');
-  font-family: 'Lato', sans-serif;
 }
